@@ -1,6 +1,6 @@
 from pathlib import Path
 from dotenv import load_dotenv
-import os
+import os, sys
 
 load_dotenv()
 
@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'apps.tutor',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
 
 }
+
+# Project Root
+
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
