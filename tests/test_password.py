@@ -1,7 +1,7 @@
 from django.test import TestCase
 from tutor.serializers import TutorSerializer
 
-class PasswordTestCase(TestCase):
+class TutorPasswordTestCase(TestCase):
     def setUp(self):
         self.tutor_serializer_one = TutorSerializer(data={
             'full_name': 'test valid',
