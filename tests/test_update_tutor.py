@@ -7,7 +7,7 @@ class TutorUpdateTestCase(APITestCase):
     def setUp(self):
         self.data = {
             'full_name': 'bruno de castro',
-            'email': 'email@gmail.com',
+            'email': 'new_email@gmail.com',
             'password': 'senha002',
             'confirm_password': 'senha002'
         }
@@ -30,8 +30,8 @@ class TutorUpdateTestCase(APITestCase):
         obj_tutor = get_object_or_404(Tutor, pk=1)
         self.assertEqual(self.data['full_name'] , obj_tutor.full_name)
 
-    #def test_successful_change_email(self):
-    #    """Verifica se a alteração de EMAIL está ocorrendo como esperado no banco de dados"""
-    #   self.request
-    #    obj_tutor = get_object_or_404(Tutor, pk=1)
-    #    self.assertEqual(self.data['email'] , obj_tutor.email)
+    def test_successful_change_email(self):
+        """Verifica se a alteração de EMAIL está ocorrendo como esperado no banco de dados"""
+        self.client.put(path='/tutors/1/', data=self.data)
+        obj_tutor = get_object_or_404(Tutor, pk=1)
+        self.assertEqual(self.data['email'] , obj_tutor.email)
