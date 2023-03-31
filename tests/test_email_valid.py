@@ -1,8 +1,21 @@
-from django.test import TestCase
+from rest_framework.test import APITestCase
 from tutor.serializers import TutorSerializer
+from tutor.models import Tutor
 
-class TutorEmailTestCase(TestCase):
+class TutorEmailTestCase(APITestCase):
     def setUp(self):
+        self.tutor_with_registered_email = Tutor.objects.create_user(
+            username = 'tutor test',
+            full_name = 'tutor test',
+            email = 'bqueiroz@gmail.com',
+            password = 'password01'
+        )
+        self.tutor_repeated_email = TutorSerializer(data={
+            'full_name': 'Bruno Castro',
+            'email': 'bqueiroz@gmail.com',
+            'password': 'password01',
+            'confirm_password': 'password01'
+        })
         self.tutor_hostless_email = TutorSerializer(data={
             'full_name': 'Bruno Castro',
             'email': 'email@',
@@ -57,3 +70,7 @@ class TutorEmailTestCase(TestCase):
     def test_hostless_email(self):
         """Verifica se um email sem host é considerado válido"""
         self.assertFalse(self.tutor_hostless_email.is_valid())
+
+    def test_registered_email(self):
+        """Verifica se os emails já cadastrados não se repetirão"""
+        self.assertFalse(self.tutor_repeated_email.is_valid())
