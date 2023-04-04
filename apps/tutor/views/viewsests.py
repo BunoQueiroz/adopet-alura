@@ -12,7 +12,7 @@ class TutorViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         headers = self.get_success_headers(serializer.data)
-        Tutor.objects.create_user(full_name=request.POST['full_name'], username=request.POST['full_name'], email=request.POST['email'], password=request.POST['password'])
+        Tutor.objects.create_user(full_name=request.POST['full_name'], username=request.POST['email'], email=request.POST['email'], password=request.POST['password'])
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     def update(self, request, *args, **kwargs):
