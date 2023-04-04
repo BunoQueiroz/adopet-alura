@@ -1,6 +1,5 @@
-import re
+from re import match
 
-def full_name_invalid(name):
-    name = str(name)
-    pattern = r'^[a-zA-Zç~^áéíóúãõâô]{2,}\s.*[a-zA-Zç~^áéíóúãõâô]{4,}.*'
-    return not bool(re.match(pattern, name))
+def full_name_invalid(name: str) -> bool:
+    pattern = r'^[a-zA-Zç~^áéíóúãõâô]{2,}\s.*[a-zA-Zç~^áéíóúãõâô]{4,}+$'
+    return not match(pattern, name)

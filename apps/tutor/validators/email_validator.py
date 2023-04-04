@@ -1,6 +1,5 @@
-import re
+from re import match
 
-def email_invalid(email):
-    str(email)
+def email_invalid(email: str) -> bool:
     pattern = r'^[a-zA-Z]{1}[\w-]+@[a-zA-Z]+[\w]+.[a-zA-Z]{2,4}.?[a-zA-Z]{0,3}$'
-    return not re.match(pattern, email)
+    return not match(pattern, email)
