@@ -10,7 +10,7 @@ class POSTRequestsTestCase(APITestCase):
             'password': 'NewPassword01',
             'confirm_password': 'NewPassword01',
         }
-        self.tutor_one = Tutor.objects.create_user('test post', 'post@email.com', 'testpost01', full_name='test post', pk=1)
+        self.tutor_one = Tutor.objects.create_user('test post', 'post@email.com', 'testpost01', full_name='test post', pk=100)
 
     def test_request_new_tutor_status_200(self):
         """Verifica se a criação de novos tutores devolve STATUS 201"""
