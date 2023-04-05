@@ -30,6 +30,15 @@ class ShelterCityValidTestCase(APITestCase):
             'city': 'city%$ !nvalid@#)(+=}{;.,<>\/',
             'state': 'state',
         })
+        self.city_graphic_accents = ShelterSerializer(data={
+            'name': 'Shelter@ & Valid-123ração',
+            'road': 'Rua Valid',
+            'number': 1,
+            'borhood': 'Borhood',
+            'CEP': '65548-123',
+            'city': 'São Amapá Uchôa',
+            'state': 'state',
+        })
 
     def test_city_with_number(self):
         """Cidades com números em seus nomes não são válidas"""
@@ -42,3 +51,7 @@ class ShelterCityValidTestCase(APITestCase):
     def test_city_with_specials_characters(self):
         """Não aceita caracteres especiais, exceto underline e ífem (_ e -)"""
         self.assertFalse(self.city_especial_charcarters.is_valid())
+
+    def test_grafic_accents(self):
+        """Permite que seja possível usar acentuações gráficas nos nomes de cidade"""
+        self.assertTrue(self.city_graphic_accents.is_valid())
