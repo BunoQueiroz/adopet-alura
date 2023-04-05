@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from shelter.models import Shelter
-from shelter.validators import invalid_name_shelter, invalid_name_city
+from shelter.validators import invalid_name_shelter, invalid_name_city, invalid_format_cep
 
 class ShelterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,5 +13,8 @@ class ShelterSerializer(serializers.ModelSerializer):
         
         if invalid_name_city(data['city']):
             raise serializers.ValidationError({'city': 'Nome de cidade inválido'})
+
+        if invalid_format_cep(data['CEP']):
+            raise serializers.ValidationError({'CEP': 'CEP de formato inválido. Siga o formato: xxxxx-xxx'})
 
         return data
