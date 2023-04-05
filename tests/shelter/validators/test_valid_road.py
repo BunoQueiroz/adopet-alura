@@ -23,11 +23,20 @@ class ShelterRoadValidTestCase(APITestCase):
         })
         self.road_number_in_name = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
-            'road': 'Rua João Fantástico Uchôa',
+            'road': 'Rua 085 João Fantástico Uchôa',
             'number': 1,
             'borhood': 'Borhood',
             'CEP': '65548-123',
-            'city': 'city 085 valid',
+            'city': 'city valid',
+            'state': 'state',
+        })
+        self.road_short_name = ShelterSerializer(data={
+            'name': 'Shelter@ & Valid-123ração',
+            'road': 'Rua',
+            'number': 1,
+            'borhood': 'Borhood',
+            'CEP': '65548-123',
+            'city': 'city valid',
             'state': 'state',
         })
 
@@ -43,3 +52,6 @@ class ShelterRoadValidTestCase(APITestCase):
         """Permite a utilização de números nos nomes das ruas (braileiras)"""
         self.assertTrue(self.road_graphic_accents.is_valid())
     
+    def test_road_short_name(self):
+        """São permitidas somente ruas brasileiras com pelo menos 4 letras"""
+        self.assertFalse(self.road_graphic_accents.is_valid())
