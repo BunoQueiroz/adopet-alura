@@ -1,7 +1,7 @@
 from rest_framework.test import APITestCase
 from shelter.serializers import ShelterSerializer
 
-class ValidNameTestCase(APITestCase):
+class ShelterNameValidTestCase(APITestCase):
     def setUp(self):
         self.shelter_valid_name = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',

@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 from tutor.models import Tutor
 from rest_framework import status
 
-class DELETERequestsTestCase(APITestCase):
+class TutorDELETERequestsTestCase(APITestCase):
     def setUp(self):
         self.tutor_one = Tutor.objects.create_user('test delete', 'delete@email.com', 'testdelete01', full_name='test delete', pk=1)
         self.tutor_two = Tutor.objects.create_user('more test delete', 'moredelete@email.com', 'testdelete01', full_name='more test delete', pk=2)

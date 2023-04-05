@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 from tutor.models import Tutor
 from rest_framework import status
 
-class POSTRequestsTestCase(APITestCase):
+class TutorPOSTRequestsTestCase(APITestCase):
     def setUp(self):
         self.data = {
             'full_name': 'tutor test post',

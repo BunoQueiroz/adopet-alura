@@ -1,7 +1,7 @@
 from rest_framework.test import APITestCase
 from tutor.models import Tutor
 
-class UsernameIsEmailTestCase(APITestCase):
+class TutorUsernameIsEmailTestCase(APITestCase):
     def setUp(self):
         self.email = 'first_email@gmail.com'
         self.data = {

@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 from django.shortcuts import get_object_or_404
 
-class TutorUpdateTestCase(APITestCase):
+class TutorPUTResquestsTestCase(APITestCase):
     def setUp(self):
         self.data = {
             'full_name': 'bruno de castro',

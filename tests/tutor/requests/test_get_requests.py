@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 from tutor.models import Tutor
 from rest_framework import status
 
-class GETRequestsTestCase(APITestCase):
+class TutorGETRequestsTestCase(APITestCase):
     def setUp(self):
         self.fields_data_tutor_one = {
             'id': 1,

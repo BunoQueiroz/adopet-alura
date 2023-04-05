@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 from tutor.serializers import TutorSerializer
 from tutor.models import Tutor
 
-class TutorEmailTestCase(APITestCase):
+class TutorEmailValidTestCase(APITestCase):
     def setUp(self):
         self.tutor_with_registered_email = Tutor.objects.create_user(
             username = 'tutor test',
