@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from shelter.models import Shelter
-from shelter.validators import invalid_name_shelter, invalid_name_city, invalid_format_cep, invalid_name_road
+from shelter.validators import invalid_name_shelter, invalid_name_city, invalid_format_cep, invalid_name_road, invalid_state
 
 class ShelterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,5 +19,8 @@ class ShelterSerializer(serializers.ModelSerializer):
 
         if invalid_name_road(data['road']):
             raise serializers.ValidationError({'road': 'Rua não prevista em nossas análises'})
+        
+        if invalid_state(data['state']):
+            raise serializers.ValidationError({'state': 'Este estádo não é válido. Segue o exemplo: CE'})
 
         return data
