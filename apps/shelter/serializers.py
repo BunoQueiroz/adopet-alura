@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from shelter.models import Shelter
-from shelter.validators import invalid_name_shelter, invalid_name_city, invalid_format_cep, invalid_name_road, invalid_state, invalid_borhood
+from shelter.validators import invalid_number, invalid_name_shelter, invalid_name_city, invalid_format_cep, invalid_name_road, invalid_state, invalid_borhood
 
 class ShelterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,5 +25,8 @@ class ShelterSerializer(serializers.ModelSerializer):
 
         if invalid_borhood(data['borhood']):
             raise serializers.ValidationError({'borhood': 'Nome de bairro inválido'})
+
+        if invalid_number(data['number']):
+            raise serializers.ValidationError({'number': 'Numero não permitido'})
 
         return data
