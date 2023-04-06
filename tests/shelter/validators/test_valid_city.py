@@ -10,7 +10,7 @@ class ShelterCityValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'city 1nvalid',
-            'state': 'state',
+            'state': 'CE',
         })
         self.city_with_name_short = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -19,7 +19,7 @@ class ShelterCityValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'CEP',
-            'state': 'state',
+            'state': 'CE',
         })
         self.city_especial_charcarters = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -28,7 +28,7 @@ class ShelterCityValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'city%$ !nvalid@#)(+=}{;.,<>\/',
-            'state': 'state',
+            'state': 'CE',
         })
         self.city_graphic_accents = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -37,7 +37,7 @@ class ShelterCityValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'São Amapá Uchôa',
-            'state': 'state',
+            'state': 'CE',
         })
 
     def test_city_with_number(self):

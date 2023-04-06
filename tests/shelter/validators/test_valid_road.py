@@ -10,7 +10,7 @@ class ShelterRoadValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'city valid',
-            'state': 'state',
+            'state': 'CE',
         })
         self.road_graphic_accents = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -19,7 +19,7 @@ class ShelterRoadValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'city valid',
-            'state': 'state',
+            'state': 'CE',
         })
         self.road_number_in_name = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -28,7 +28,7 @@ class ShelterRoadValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'city valid',
-            'state': 'state',
+            'state': 'CE',
         })
         self.road_short_name = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -37,7 +37,7 @@ class ShelterRoadValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'city valid',
-            'state': 'state',
+            'state': 'CE',
         })
 
     def test_specials_characters_in_road(self):

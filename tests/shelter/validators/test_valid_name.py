@@ -10,7 +10,7 @@ class ShelterNameValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'city valid',
-            'state': 'state',
+            'state': 'CE',
         })        
         self.shelter_invalid_name = ShelterSerializer(data={
             'name': '1234-&@$56',
@@ -19,7 +19,7 @@ class ShelterNameValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '65548-123',
             'city': 'city valid',
-            'state': 'state',
+            'state': 'CE',
         })
     
     def test_shelter_valid_name(self):
