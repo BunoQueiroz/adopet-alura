@@ -50,8 +50,8 @@ class ShelterRoadValidTestCase(APITestCase):
     
     def test_number_in_road_name(self):
         """Permite a utilização de números nos nomes das ruas (braileiras)"""
-        self.assertTrue(self.road_graphic_accents.is_valid())
+        self.assertTrue(self.road_number_in_name.is_valid())
     
     def test_road_short_name(self):
         """São permitidas somente ruas brasileiras com pelo menos 4 letras"""
-        self.assertFalse(self.road_graphic_accents.is_valid())
+        self.assertFalse(self.road_short_name.is_valid())
