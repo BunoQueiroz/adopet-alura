@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from pet.models import Pet
-from pet.validators import invalid_pet_name, invalid_age_pet
+from pet.validators import invalid_name_pet, invalid_age_pet
 
 class PetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,7 +9,7 @@ class PetSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         
-        if invalid_pet_name(data['name']):
+        if invalid_name_pet(data['name']):
             raise serializers.ValidationError({'name': 'Nome de pet inválido'})
         
         if invalid_age_pet(data['age']):
