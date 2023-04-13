@@ -30,6 +30,15 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'city': 'Paraipaba',
             'state': 'CE',
         })
+        self.borhood_blank = ShelterSerializer(data={
+            'name': 'Nome do Abrigo',
+            'road': 'Rua Válida',
+            'number': 10,
+            'borhood': '',
+            'CEP': '62685-000',
+            'city': 'Paraipaba',
+            'state': 'CE',
+        })
         self.borhood_valid = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
             'road': 'Rua Válida',
@@ -51,6 +60,10 @@ class ShelterBorhoodValidTestCase(APITestCase):
     def test_special_characters_in_borhood(self):
         """Não são permitidos caracteres especiais nos nomes dos BAIRROS"""
         self.assertFalse(self.borhood_with_special_characters.is_valid())
+
+    def test_blank(self):
+        """É permitido que os campos de bairro não sejam preenchidos"""
+        self.assertTrue(self.borhood_valid.is_valid())
 
     def test_valid_borhood(self):
         """Exemplo de BAIRRO que deve ser considerado válido"""
