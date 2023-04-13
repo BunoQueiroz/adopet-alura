@@ -39,6 +39,15 @@ class ShelterCEPValidTestCase(APITestCase):
             'city': 'city valid',
             'state': 'CE',
         })
+        self.shelter_cep_blank = ShelterSerializer(data={
+            'name': 'Shelter valid',
+            'road': 'Rua Valid',
+            'number': 1,
+            'borhood': 'Borhood',
+            'CEP': '',
+            'city': 'city valid',
+            'state': 'CE',
+        })
 
     def test_valid_CEP_format(self):
         """Verifica se o CEP está no formato adequado"""
@@ -46,3 +55,7 @@ class ShelterCEPValidTestCase(APITestCase):
         self.assertFalse(self.shelter_cep_invalid_format.is_valid())
         self.assertFalse(self.shelter_cep_with_letter.is_valid())
         self.assertFalse(self.shelter_cep_without_hyphen.is_valid())
+
+    def test_CEP_blank(self):
+        """O CEP não deve ser informado obrigatoriamente"""
+        self.assertTrue(self.shelter_cep_blank.is_valid())
