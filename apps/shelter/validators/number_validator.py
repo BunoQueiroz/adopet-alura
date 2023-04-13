@@ -1,3 +1,7 @@
-def invalid_number(number: int) -> bool:
-    if number > 9999:
-        return True
+from re import match
+
+def invalid_number(number: str) -> bool:
+    if number:
+        pattern = r'^\d{1,4}$'
+        return not match(pattern, number)
+    return False
