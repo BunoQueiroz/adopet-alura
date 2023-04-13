@@ -21,12 +21,12 @@ class ShelterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'road': 'Rua não prevista em nossas análises'})
         
         if invalid_state(data['state']):
-            raise serializers.ValidationError({'state': 'Este estádo não é válido. Segue o exemplo: CE'})
+            raise serializers.ValidationError({'state': 'Este estado não é válido. Segue o exemplo: CE'})
 
         if invalid_borhood(data['borhood']):
             raise serializers.ValidationError({'borhood': 'Nome de bairro inválido'})
 
         if invalid_number(data['number']):
-            raise serializers.ValidationError({'number': 'Numero não permitido'})
+            raise serializers.ValidationError({'number': 'Número não permitido'})
 
         return data
