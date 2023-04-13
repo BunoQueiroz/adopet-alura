@@ -39,6 +39,15 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'city': 'Paraipaba',
             'state': 'CE',
         })
+        self.number_blank = ShelterSerializer(data={
+            'name': 'Nome Abrigo',
+            'road': 'Rua tal',
+            'number': '',
+            'borhood': 'Boa Vista',
+            'CEP': '62685-000',
+            'city': 'Paraipaba',
+            'state': 'CE',
+        })
 
     def test_number_in_string_format(self):
         """Não são permitidos NÚMEROS juntamente com letras"""
@@ -55,3 +64,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
     def test_float_number(self):
         """Não são permitidos NÚMEROS de ponto flutuante"""
         self.assertFalse(self.number_float.is_valid())
+
+    def test_blank_number(self):
+        """Números de residências não são obrigatórios"""
+        self.assertTrue(self.number_blank.is_valid())
