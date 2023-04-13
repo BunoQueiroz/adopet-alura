@@ -39,6 +39,15 @@ class ShelterRoadValidTestCase(APITestCase):
             'city': 'city valid',
             'state': 'CE',
         })
+        self.road_blank_name = ShelterSerializer(data={
+            'name': 'Shelter validation',
+            'road': '',
+            'number': 1,
+            'borhood': 'Borhood',
+            'CEP': '65548-123',
+            'city': 'city valid',
+            'state': 'CE',
+        })
 
     def test_specials_characters_in_road(self):
         """Impossível haver ruas brasileiras com certos caracteres especiais"""
@@ -55,3 +64,7 @@ class ShelterRoadValidTestCase(APITestCase):
     def test_road_short_name(self):
         """São permitidas somente ruas brasileiras com pelo menos 4 letras"""
         self.assertFalse(self.road_short_name.is_valid())
+
+    def test_road_field_blank(self):
+        """A rua é opcional, por isso pode ser 'em branco'"""
+        self.assertTrue(self.road_blank_name.is_valid())
