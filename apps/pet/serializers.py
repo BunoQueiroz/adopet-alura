@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from pet.models import Pet
-from pet.validators import invalid_name_pet, invalid_age_pet, invalid_size_pet
+from pet.validators import invalid_name_pet, invalid_age_pet, invalid_size_pet, invalid_characteristics_pet
 
 class PetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,5 +17,8 @@ class PetSerializer(serializers.ModelSerializer):
         
         if invalid_size_pet(data['size']):
             raise serializers.ValidationError({'size': 'Tamanho não reconhecido. Tente um desses: Médio, Grande, Pequeno'})
+        
+        if invalid_characteristics_pet(data['characteristics']):
+            raise serializers.ValidationError({'characteristics': 'Características Não aceitas'})
 
         return data
