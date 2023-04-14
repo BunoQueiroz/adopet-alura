@@ -4,6 +4,8 @@ from rest_framework import routers
 from tutor.views import TutorViewSet
 from pet.views import PetViewSet
 from shelter.views import ShelterViewSet
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register('tutors', TutorViewSet, 'tutors')
@@ -13,4 +15,4 @@ router.register('shelters', ShelterViewSet, 'shelters')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
