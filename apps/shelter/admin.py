@@ -1,3 +1,4 @@
 from django.contrib import admin
+from shelter.models import Shelter
 
-# Register your models here.
+admin.site.register(Shelter)
