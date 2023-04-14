@@ -68,7 +68,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
 
     def test_blank(self):
         """É permitido que os campos de bairro não sejam preenchidos"""
-        self.assertTrue(self.borhood_valid.is_valid())
+        self.assertTrue(self.borhood_blank.is_valid())
 
     def test_valid_borhood(self):
         """Exemplo de BAIRRO que deve ser considerado válido"""
