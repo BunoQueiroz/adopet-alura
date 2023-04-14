@@ -13,6 +13,7 @@ class ShelterPOSTRequestsTestCase(APITestCase):
             'CEP': '65685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         }
         self.data_shelter_post_id_201 = {
             'name': 'Abrigo diferente',
@@ -22,6 +23,7 @@ class ShelterPOSTRequestsTestCase(APITestCase):
             'CEP': '65685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         }
     
     def test_post_status_201(self):

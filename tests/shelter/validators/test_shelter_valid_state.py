@@ -10,6 +10,7 @@ class ShelterStateValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '62685-000',
             'city': 'city valid',
+            'phone': '',
             'state': 'A',
         })
         self.state_with_tree_characters = ShelterSerializer(data={
@@ -19,6 +20,7 @@ class ShelterStateValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '62685-000',
             'city': 'city valid',
+            'phone': '',
             'state': 'abc',
         })
         self.state_with_special_characters = ShelterSerializer(data={
@@ -28,6 +30,7 @@ class ShelterStateValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '62685-000',
             'city': 'city valid',
+            'phone': '',
             'state': '%")(*&¨%$#@!-+*;.,|\/',
         })
         self.state_with_number = ShelterSerializer(data={
@@ -37,6 +40,7 @@ class ShelterStateValidTestCase(APITestCase):
             'borhood': 'Borhood',
             'CEP': '62685-000',
             'city': 'city valid',
+            'phone': '',
             'state': 'a7',
         })
 

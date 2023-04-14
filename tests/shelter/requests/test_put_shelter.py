@@ -14,6 +14,7 @@ class ShelterPUTRequestsTestCase(APITestCase):
             'borhood': 'Bendita',
             'city': 'Paraipaba',
             'CEP': '65685-000',
+            'phone': '',
         }
         self.shelter_updated = Shelter(id=1, name='New Shelter', road='Rua Nova', state='CE', number=3, borhood='Bendita', city='Paraipaba', CEP='65685-000')
 

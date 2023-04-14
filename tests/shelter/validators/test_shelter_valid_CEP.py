@@ -11,6 +11,7 @@ class ShelterCEPValidTestCase(APITestCase):
             'CEP': '65548-123',
             'city': 'city valid',
             'state': 'CE',
+            'phone': '',
         })
         self.shelter_cep_invalid_format = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -20,6 +21,7 @@ class ShelterCEPValidTestCase(APITestCase):
             'CEP': '65-548123',
             'city': 'city valid',
             'state': 'CE',
+            'phone': '',
         })
         self.shelter_cep_with_letter = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -29,6 +31,7 @@ class ShelterCEPValidTestCase(APITestCase):
             'CEP': '6554p-123',
             'city': 'city valid',
             'state': 'CE',
+            'phone': '',
         })
         self.shelter_cep_without_hyphen = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -38,6 +41,7 @@ class ShelterCEPValidTestCase(APITestCase):
             'CEP': '655488123',
             'city': 'city valid',
             'state': 'CE',
+            'phone': '',
         })
         self.shelter_cep_blank = ShelterSerializer(data={
             'name': 'Shelter valid',
@@ -47,6 +51,7 @@ class ShelterCEPValidTestCase(APITestCase):
             'CEP': '',
             'city': 'city valid',
             'state': 'CE',
+            'phone': '',
         })
 
     def test_valid_CEP_format(self):

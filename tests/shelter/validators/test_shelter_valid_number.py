@@ -11,6 +11,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
         self.number_negative = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -20,6 +21,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
         self.number_greater_then_9999 = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -29,6 +31,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
         self.number_float = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -38,6 +41,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
         self.number_blank = ShelterSerializer(data={
             'name': 'Nome Abrigo',
@@ -47,6 +51,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
 
     def test_number_in_string_format(self):

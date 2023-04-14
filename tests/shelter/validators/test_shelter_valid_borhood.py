@@ -11,6 +11,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
         self.borhood_name_with_few_characters = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -20,6 +21,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
         self.borhood_with_special_characters = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -29,6 +31,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
         self.borhood_blank = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -38,6 +41,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
         self.borhood_valid = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -47,6 +51,7 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
+            'phone': '',
         })
 
     def test_borhood_with_number(self):
