@@ -1,5 +1,5 @@
 from django.contrib import admin
-from pet.models import Adocao, Pet
+from pet.models import Adoption, Pet
 
-admin.site.register(Adocao)
+admin.site.register(Adoption)
 admin.site.register(Pet)
