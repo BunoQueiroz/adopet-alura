@@ -5,3 +5,4 @@ from .road_validator import invalid_name_road
 from .state_validator import invalid_state
 from .borhood_validator import invalid_borhood
 from .number_validator import invalid_number
+from .phone_validator import invalid_phone
