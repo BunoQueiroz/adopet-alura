@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from shelter.models import Shelter
-from shelter.validators import invalid_number, invalid_name_shelter, invalid_name_city, invalid_format_cep, invalid_name_road, invalid_state, invalid_borhood
+from shelter.validators import invalid_number, invalid_name_shelter
+from shelter.validators import invalid_name_city, invalid_format_cep
+from shelter.validators import invalid_name_road, invalid_state
+from shelter.validators import invalid_borhood, invalid_phone
 
 class ShelterSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,5 +31,8 @@ class ShelterSerializer(serializers.ModelSerializer):
 
         if invalid_number(data['number']):
             raise serializers.ValidationError({'number': 'Número não permitido'})
+
+        if invalid_phone(data['phone']):
+            raise serializers.ValidationError({'phone': 'Número inválido. Segue o exemplo: (85)91234-1234'})
 
         return data
