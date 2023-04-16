@@ -23,12 +23,12 @@ class PetGETRequestsTestCase(APITestCase):
         response = self.client.get('/pets/')
         self.assertEqual(response['Content-Type'], 'application/json')
     
-    def test_pet_get_status_200(self):
+    def test_pet_get_for_id_status_200(self):
         """O Status code retornado, ao requisitar (get) um pet pelo ID, deve ser 200"""
         response = self.client.get('/pets/1/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_pet_get_format_JSON(self):
+    def test_pet_get_for_id_format_JSON(self):
         """O conteúdo de um recurso de pet, por ID, deve ser retornado em formato JSON"""
         response = self.client.get('/pets/1/')
         self.assertEqual(response['Content-Type'], 'application/json')
