@@ -5,8 +5,8 @@ from rest_framework import status
 class ShelterDELETERequestsTestCase(APITestCase):
 
     def setUp(self) -> None:
-        self.shelter_status_code_deleted = Shelter.objects.create(id=99, name='Novo Abrigo', road='Rua Nova', state='CE', number=3, borhood='Bendita', city='Paraipaba', CEP='65685-000')
-        self.shelter_to_be_deleted = Shelter.objects.create(id=100, name='Novo Abrigo', road='Rua Nova', state='CE', number=3, borhood='Bendita', city='Paraipaba', CEP='65685-000')
+        self.shelter_status_code_deleted = Shelter.objects.create(id=99, name='Novo Abrigo', email='email@gmail.com', username='pemail@gmail.com', password='senhas001', state='CE', borhood='Bendita', city='Paraipaba')
+        self.shelter_to_be_deleted = Shelter.objects.create(id=100, name='Novo Abrigo', email='outher-email@gmail.com', username='semail@gmail.com', password='senhas001', state='CE', borhood='Bendita', city='Paraipaba')
 
     def test_delete_shelter_status_204(self):
         """Deve ser retornado um status code de 204 quando um abrigo for deletado"""

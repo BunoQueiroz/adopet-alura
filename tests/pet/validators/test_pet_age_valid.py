@@ -6,7 +6,7 @@ class PetAgeValidTestCase(APITestCase):
 
     def setUp(self) -> None:
         Shelter.objects.create(
-            id=10, name='Abrigo Um', road='Rua João Naciso de Oliveira', number='03', borhood='Pedrinhas', CEP='62685-000', city='Paraipaba', state='CE',
+            id=10, name='Abrigo Um', username='email@email.com', email='email@email.com', city='Paraipaba', state='CE',
         )
         self.shelter = Shelter.objects.get(pk=10)
         self.pet_age_without_number = PetSerializer(data={

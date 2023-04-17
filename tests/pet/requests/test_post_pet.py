@@ -7,7 +7,7 @@ class PetPOSTRequestsTestCase(APITestCase):
 
     def setUp(self) -> None:
         self.shelter = Shelter.objects.create(
-            id=100, name='Abrigo Um', road='Rua João Naciso de Oliveira', number='03', borhood='Pedrinhas', CEP='62685-000', city='Paraipaba', state='CE',
+            id=100, name='Abrigo Um', username='email@email.com', email='email@email.com', city='Paraipaba', state='CE',
         )
         self.data_status_201 = {
             'id': 5,

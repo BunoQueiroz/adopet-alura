@@ -7,20 +7,18 @@ class ShelterPOSTRequestsTestCase(APITestCase):
     def setUp(self) -> None:
         self.data_shelter_post_id_200 = {
             'name': 'Abrigos diferentes',
-            'road': 'Rua Nova Alegria',
-            'number': '03',
+            'password': 'senhas001',
+            'email': 'emails@gmail.com',
             'borhood': 'Bendita',
-            'CEP': '65685-000',
             'city': 'Paraipaba',
             'state': 'CE',
             'phone': '',
         }
         self.data_shelter_post_id_201 = {
             'name': 'Abrigo diferente',
-            'road': 'Rua Nova Alegria',
-            'number': '03',
+            'password': 'senhas001',
+            'email': 'emails@gmail.com',
             'borhood': 'Bendita',
-            'CEP': '65685-000',
             'city': 'Paraipaba',
             'state': 'CE',
             'phone': '',

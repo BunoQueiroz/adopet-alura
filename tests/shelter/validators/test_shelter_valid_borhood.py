@@ -5,53 +5,48 @@ class ShelterBorhoodValidTestCase(APITestCase):
     def setUp(self) -> None:
         self.borhood_with_number = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
-            'road': 'Rua Válida',
-            'number': 10,
             'borhood': '1Borhood2',
-            'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
             'phone': '',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
         })
         self.borhood_name_with_few_characters = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
-            'road': 'Rua Válida',
-            'number': 12,
             'borhood': 'Bo',
-            'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
             'phone': '',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
         })
         self.borhood_with_special_characters = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
-            'road': 'Rua Válida',
-            'number': 11,
             'borhood': '[^~`´.,<>:;-+*/\]Borhood(*&_+=!@#)',
-            'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
             'phone': '',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
         })
         self.borhood_blank = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
-            'road': 'Rua Válida',
-            'number': 10,
             'borhood': '',
-            'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
             'phone': '',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
         })
         self.borhood_valid = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
-            'road': 'Rua Válida',
-            'number': 10,
             'borhood': 'Boa Vista',
-            'CEP': '62685-000',
             'city': 'Paraipaba',
             'state': 'CE',
             'phone': '',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
         })
 
     def test_borhood_with_number(self):

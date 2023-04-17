@@ -5,42 +5,38 @@ class ShelterStateValidTestCase(APITestCase):
     def setUp(self) -> None:
         self.state_with_one_characters = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
-            'road': 'Rua Válida',
-            'number': 10,
             'borhood': 'Borhood',
-            'CEP': '62685-000',
             'city': 'city valid',
             'phone': '',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'state': 'A',
         })
         self.state_with_tree_characters = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
-            'road': 'Rua Válida',
-            'number': 10,
             'borhood': 'Borhood',
-            'CEP': '62685-000',
             'city': 'city valid',
             'phone': '',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'state': 'abc',
         })
         self.state_with_special_characters = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
-            'road': 'Rua Válida',
-            'number': 10,
             'borhood': 'Borhood',
-            'CEP': '62685-000',
             'city': 'city valid',
             'phone': '',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'state': '%")(*&¨%$#@!-+*;.,|\/',
         })
         self.state_with_number = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
-            'road': 'Rua Válida',
-            'number': 10,
             'borhood': 'Borhood',
-            'CEP': '62685-000',
             'city': 'city valid',
             'phone': '',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'state': 'a7',
         })
 

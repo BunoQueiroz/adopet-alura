@@ -9,60 +9,55 @@ class ShelterPhoneValidTestCase(APITestCase):
             'name': 'Abrigo de exemplo',
             'city': 'Paraipaba',
             'state': 'CE',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'phone': 'meu telefone01',
-            'CEP': '62685-000',
-            'number': '',
-            'road': 'rua joão',
             'borhood': 'bairro fulano',
         })
         self.shelter_number_negative = ShelterSerializer(data={
             'name': 'Abrigo de exemplo',
             'city': 'Paraipaba',
             'state': 'CE',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'phone': '-852200000',
-            'CEP': '62685-000',
-            'number': '',
-            'road': 'rua joão',
             'borhood': 'bairro fulano',
         })
         self.shelter_number_tiny = ShelterSerializer(data={
             'name': 'Abrigo de exemplo',
             'city': 'Paraipaba',
             'state': 'CE',
+            'borhood': 'bairro daqui',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'road': 'rua joão',
             'phone': '11900000000',
-            'CEP': '62685-000',
-            'number': '',
-            'borhood': 'bairro fulano'
         })
         self.shelter_number_very_large = ShelterSerializer(data={
             'name': 'Abrigo de exemplo',
-            'CEP': '62685-000',
-            'number': '',
-            'road': 'rua joão',
             'borhood': 'bairro fulano',
             'city': 'Paraipaba',
             'state': 'CE',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'phone': '5699999999999',
         })
         self.shelter_number_valid_with_ddd = ShelterSerializer(data={
             'name': 'Abrigo de exemplo',
-            'CEP': '62685-000',
-            'number': '',
-            'road': 'rua joão',
             'borhood': 'bairro fulano',
             'city': 'Paraipaba',
             'state': 'CE',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'phone': '(85)98163-9630',
         })
         self.shelter_number_valid_with_ddd_and_nc = ShelterSerializer(data={
             'name': 'Abrigo de exemplo',
-            'CEP': '62685-000',
-            'number': '',
-            'road': 'rua joão',
             'borhood': 'bairro fulano',
             'city': 'Paraipaba',
             'state': 'CE',
+            'email': 'email@gmail.com',
+            'password': 'senhas001',
             'phone': '+55 (85)98163-9630',
         })
 

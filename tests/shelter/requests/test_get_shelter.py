@@ -6,11 +6,10 @@ class ShelterGETRequestTestCase(APITestCase):
     def setUp(self) -> None:
         self.shelter_paraipaba = Shelter.objects.create(
             id=1,
+            email='email@gmail.com',
+            password='senha001',
             name='Abrigo Um',
-            road='Rua João Naciso de Oliveira',
-            number='03',
             borhood='Pedrinhas',
-            CEP='62685-000',
             city='Paraipaba',
             state='CE',
         )
