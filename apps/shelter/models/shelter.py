@@ -1,17 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class Shelter(models.Model):
+class Shelter(User):
     name = models.CharField(max_length=50)
-    road = models.CharField(max_length=70, blank=True)
-    number = models.CharField(max_length=4, blank=True)
     borhood = models.CharField(max_length=100, blank=True)
-    CEP = models.CharField(max_length=9, blank=True)
     city = models.CharField(max_length=70)
     state = models.CharField(max_length=70)
     phone = models.CharField(max_length=18, blank=True)
     image = models.ImageField(upload_to='shelters/%Y/%m/%d/', blank=True)
 
     def __str__(self):
-        if self.name:
-            return self.name
-        return f'{self.road} - {self.city}'
+        return self.name
