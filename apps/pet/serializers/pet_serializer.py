@@ -3,6 +3,9 @@ from pet.models import Pet
 from pet.validators import invalid_name_pet, invalid_age_pet, invalid_size_pet, invalid_characteristics_pet
 
 class PetSerializer(serializers.ModelSerializer):
+
+    adopted = serializers.BooleanField(read_only=True)
+
     class Meta:
         model = Pet
         fields = '__all__'
