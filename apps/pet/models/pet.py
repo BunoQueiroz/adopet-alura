@@ -8,6 +8,7 @@ class Pet(models.Model):
     size = models.CharField(max_length=15)
     characteristics = models.CharField(max_length=25)
     shelter = models.ForeignKey(Shelter, on_delete=models.CASCADE)
+    adopted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
