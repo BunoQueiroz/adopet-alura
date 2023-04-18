@@ -7,6 +7,5 @@ class PetViewSet(viewsets.ModelViewSet):
     queryset = Pet.objects.filter(adopted=False)
 
 class AdoptionViewSet(viewsets.ModelViewSet):
-    http_method_names = ['post', 'get']
     serializer_class = AdoptionSerializer
     queryset = Adoption.objects.all()
