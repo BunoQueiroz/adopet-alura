@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 from dotenv import load_dotenv
 import os, sys
@@ -138,6 +139,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
+    'DEFUALT_DEFUALT_EXPIRY_TIME': timedelta(os.getenv('TIME_EXPIRY_TOKEN', days=2)),
 }
 
 # Signals
