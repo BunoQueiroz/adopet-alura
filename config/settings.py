@@ -139,7 +139,7 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
-    'DEFUALT_DEFUALT_EXPIRY_TIME': timedelta(os.getenv('TIME_EXPIRY_TOKEN', days=2)),
+    'DEFAULT_TOKEN_EXPIRY_TIME': os.getenv('TIME_EXPIRY_TOKEN', timedelta(days=1)),
 }
 
 # Signals
