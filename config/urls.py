@@ -6,6 +6,7 @@ from pet.views import PetViewSet, AdoptionViewSet
 from shelter.views import ShelterViewSet
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.authtoken.views import ObtainAuthToken
 
 router = routers.DefaultRouter()
 router.register('tutors', TutorViewSet, 'tutors')
@@ -16,4 +17,5 @@ router.register('adoptions', AdoptionViewSet, 'adoptions')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path('auth/', ObtainAuthToken.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
