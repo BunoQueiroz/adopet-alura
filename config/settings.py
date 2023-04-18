@@ -140,6 +140,14 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_TOKEN_EXPIRY_TIME': os.getenv('TIME_EXPIRY_TOKEN', timedelta(days=1)),
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': os.getenv('ANON_THROTTLE_RATE', '10/days'),
+        'user': os.getenv('USER_THROTTLE_RATE', '100/days'),
+    },
 }
 
 # Signals
