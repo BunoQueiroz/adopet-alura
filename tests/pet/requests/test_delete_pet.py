@@ -16,14 +16,14 @@ class PetDELETERequestsTestCase(APITestCase):
             id=2, name='pet exemple', age='1 ano', size='pequeno', shelter=shelter, characteristics='Divertido e calmo'
         )
 
-    def test_pet_delete_status_204(self):
-        """O Status code retornado, quando for enviada uma requisição delete, deve ser 204"""
+    def test_pet_delete_status_401(self):
+        """O Status code retornado, quando for enviada uma requisição delete por um usuário anônimo, deve ser 401"""
         response = self.client.delete('/pets/1/')
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_pet_delete_in_data_base(self):
-        """O recurso requisitado (delete) deve ser realmente removido do banco de dados"""
+        """O recurso requisitado (delete), por usuários anônimos, não deve ser alterado do banco de dados"""
         self.client.delete('/pets/2/')
         pet_deleted = Pet.objects.filter(name='pet exemple').exists()
-        self.assertFalse(pet_deleted)
+        self.assertTrue(pet_deleted)
     
