@@ -19,19 +19,15 @@ class TutorPUTResquestsTestCase(APITestCase):
             password = 'senha001'
         )
 
-    def test_verify_put_requests(self):
-        """Verifica se as requisições PUT sendo recebidas com sucesso"""
+    def test_put_tutor_by_anonymous_users_status_401(self):
+        """Requisições PUT, realizadas por usuários anônimos, deve retornar status 401"""
         request = self.client.put(path='/tutors/1/', data=self.data)
-        self.assertEqual(request.status_code, status.HTTP_200_OK)
+        self.assertEqual(request.status_code, status.HTTP_401_UNAUTHORIZED)
 
-    def test_successful_change_full_name(self):
-        """Verifica se as alterações no NOME COMPLETO estão ocorrendo como esperado no banco de dados"""
+    def test_put_tutor_by_anonymous_users_in_data_base(self):
+        """Usuários anônimos não devem conseguir Atualizar o recurso de tutor"""
         self.client.put(path='/tutors/1/', data=self.data)
         obj_tutor = get_object_or_404(Tutor, pk=1)
-        self.assertEqual(self.data['full_name'] , obj_tutor.full_name)
-
-    def test_successful_change_email(self):
-        """Verifica se a alteração de EMAIL está ocorrendo como esperado no banco de dados"""
-        self.client.put(path='/tutors/1/', data=self.data)
-        obj_tutor = get_object_or_404(Tutor, pk=1)
-        self.assertEqual(self.data['email'] , obj_tutor.email)
+        self.assertNotEqual(self.data['full_name'] , obj_tutor.full_name)
+        self.assertNotEqual(self.data['email'] , obj_tutor.email)
+        self.assertNotEqual(self.data['email'] , obj_tutor.username)
