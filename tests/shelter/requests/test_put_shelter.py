@@ -23,22 +23,24 @@ class ShelterPUTRequestsTestCase(APITestCase):
             password='novasenha001',
             email='novo-email@gmail.com',
             name='New Shelter',
-            state='CE',
+            state='SP',
             borhood='Bendita',
-            city='Paraipaba',
+            city='São Paulo',
             phone='85981639630'
         )
 
-    def test_status_200_for_put(self):
-        """O status code, quando um abrigo for atualizado, deve retornar 200"""
+    def test_shleter_put_by_anonymous_users_status_401(self):
+        """O status code, quando um usuário anônimo realizar uma requisição PUT, deve retornar 401"""
         response = self.client.put('/shelters/1/', self.data_shelter)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
-    def test_upload_in_data_base(self):
-        """Os dados devem serem atualizados no banco de dados na entidade de Abrigo"""
+    def test_shelter_put_by_anonymous_users_upload_in_data_base(self):
+        """Os dados, quando um usuário anônimo realizar requisições PUT, não devem serem atualizados no banco de dados"""
         self.client.put(path='/shelters/1/', data=self.data_shelter)
         obj_shelter = get_object_or_404(Shelter, pk=1)
-        self.assertEqual(self.shelter_updated.name , obj_shelter.name)
-        self.assertEqual(self.shelter_updated.state , obj_shelter.state)
-        self.assertEqual(self.shelter_updated.city , obj_shelter.city)
-        self.assertEqual(self.shelter_updated.phone , obj_shelter.phone)
+        self.assertNotEqual(self.shelter_updated.name , obj_shelter.name)
+        self.assertNotEqual(self.shelter_updated.state , obj_shelter.state)
+        self.assertNotEqual(self.shelter_updated.city , obj_shelter.city)
+        self.assertNotEqual(self.shelter_updated.phone , obj_shelter.phone)
+        self.assertNotEqual(self.shelter_updated.email , obj_shelter.email)
+        self.assertNotEqual(self.shelter_updated.username , obj_shelter.username)
