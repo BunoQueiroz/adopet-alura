@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 
 class TutorUsernameIsEmailTestCase(APITestCase):
+    
     def setUp(self):
         self.email = 'first_email@gmail.com'
         self.user = User.objects.create_superuser(email='meuemail@gmail.com', username='bruno', password='bruno001')
@@ -16,10 +17,8 @@ class TutorUsernameIsEmailTestCase(APITestCase):
             'password': 'password01',
             'confirm_password': 'password01',
         }
-        self.head = {
-        }
 
-    def test_username_equal_email_tutor(self):
+    def test_tutor_username_equal_email(self):
         """Garante que os usernames dos tutores sejam seus próprios emails"""
         self.client.post(path='/tutors/', data=self.data)
         tutor_in_data_base = Tutor.objects.get(email=self.data['email'])

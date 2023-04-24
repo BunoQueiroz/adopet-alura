@@ -3,6 +3,7 @@ from tutor.serializers import TutorSerializer
 from tutor.models import Tutor
 
 class TutorEmailValidTestCase(APITestCase):
+    
     def setUp(self):
         self.tutor_with_registered_email = Tutor.objects.create_user(
             username = 'tutor test',
@@ -53,24 +54,24 @@ class TutorEmailValidTestCase(APITestCase):
             'confirm_password': 'password01'
         })
 
-    def test_email_valid(self):
-        """Verifica se um email válido é definitivamente considerado válido"""
+    def test_tutor_email_valid(self):
+        """Todos os emails deste teste devem ser considerados válidos"""
         self.assertTrue(self.tutor_email_valid_one.is_valid())
         self.assertTrue(self.tutor_email_valid_two.is_valid())
         self.assertTrue(self.tutor_email_valid_tree.is_valid())
 
-    def test_email_with_only_number(self):
-        """Verifica se um email que se inicia com números é considerado válido"""
+    def test_tutor_email_with_only_number(self):
+        """Um email que se inicia com números é considerado válido"""
         self.assertFalse(self.tutor_email_with_only_number.is_valid())
 
-    def test_email_with_invalid_host(self):
-        """Verifica se um email com host apenas numérico é considerado válido"""
+    def test_tutor_email_with_invalid_host(self):
+        """Um email com host apenas numérico é considerado inválido"""
         self.assertFalse(self.tutor_email_with_invalid_host.is_valid())
 
-    def test_hostless_email(self):
-        """Verifica se um email sem host é considerado válido"""
+    def test_tutor_hostless_email(self):
+        """Um email sem host não deve ser considerado válido"""
         self.assertFalse(self.tutor_hostless_email.is_valid())
 
-    def test_registered_email(self):
-        """Verifica se os emails já cadastrados não se repetirão"""
+    def test_tutor_registered_email(self):
+        """Emails já cadastrados devem ser considerado inválidos"""
         self.assertFalse(self.tutor_repeated_email.is_valid())

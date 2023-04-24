@@ -2,6 +2,7 @@ from django.test import TestCase
 from tutor.serializers import TutorSerializer
 
 class TutorNameValidTestCase(TestCase):
+
     def setUp(self):
         self.tutor_unique_name = TutorSerializer(data={
             'full_name': 'test',
@@ -22,14 +23,14 @@ class TutorNameValidTestCase(TestCase):
             'confirm_password': 'password01'
         })
 
-    def test_just_name(self):
-        """Verifica se apenas nome dos tutores não são válidos"""
+    def test_tutor_just_name(self):
+        """Tutores com apenas um nome não devem ser considerado válido"""
         self.assertFalse(self.tutor_unique_name.is_valid())
 
-    def test_with_number(self):
-        """Verifica se os nome dos tutores com números não são válidos"""
+    def test_tutor_with_number(self):
+        """Não deve haver número algum em nomes de tutores"""
         self.assertFalse(self.tutor_name_with_number.is_valid())
 
-    def test_fullname_valid(self):
-        """Verifica se ao usar 'nome e sobrenome' é realmente válido"""
+    def test_tutor_fullname_valid(self):
+        """O exemplo de nome completo deste teste deve ser considerado válido"""
         self.assertTrue(self.tutor_name_valid.is_valid())
