@@ -2,7 +2,6 @@ from rest_framework import viewsets, status
 from shelter.serializers import ShelterSerializer
 from shelter.models import Shelter
 from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
 
 class ShelterViewSet(viewsets.ModelViewSet):
     serializer_class = ShelterSerializer
