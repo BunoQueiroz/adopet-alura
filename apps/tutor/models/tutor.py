@@ -18,4 +18,5 @@ def insert_tutor_in_group_tutor(sender, instance: Tutor, created, **kargs):
         if group_not_created:
             permissions = ['view_pet', 'view_shelter', 'add_tutor', 'view_tutor', 'change_tutor', 'delete_tutor']
             group_permissions = add_permissions(group, permissions)
-        instance.groups.add(group_permissions)
+            instance.groups.add(group_permissions)
+        instance.groups.add(group)
