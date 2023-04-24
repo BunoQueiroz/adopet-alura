@@ -2,6 +2,7 @@ from rest_framework.test import APITestCase
 from shelter.serializers import ShelterSerializer
 
 class ShelterBorhoodValidTestCase(APITestCase):
+
     def setUp(self) -> None:
         self.borhood_with_number = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -61,10 +62,10 @@ class ShelterBorhoodValidTestCase(APITestCase):
         """Não são permitidos caracteres especiais nos nomes dos BAIRROS"""
         self.assertFalse(self.borhood_with_special_characters.is_valid())
 
-    def test_blank(self):
+    def test_borhood_blank(self):
         """É permitido que os campos de bairro não sejam preenchidos"""
         self.assertTrue(self.borhood_blank.is_valid())
 
     def test_valid_borhood(self):
-        """Exemplo de BAIRRO que deve ser considerado válido"""
+        """Estes exemplos de bairros devem ser considerados válidos"""
         self.assertTrue(self.borhood_valid.is_valid())

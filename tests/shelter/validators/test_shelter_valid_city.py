@@ -2,6 +2,7 @@ from rest_framework.test import APITestCase
 from shelter.serializers import ShelterSerializer
 
 class ShelterCityValidTestCase(APITestCase):
+
     def setUp(self) -> None:
         self.city_with_number_in_name = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -49,9 +50,9 @@ class ShelterCityValidTestCase(APITestCase):
         self.assertFalse(self.city_with_name_short.is_valid())
 
     def test_city_with_specials_characters(self):
-        """Não aceita caracteres especiais, exceto underline e ífem (_ e -)"""
+        """Cidades com caracteres especiais são inválidas, exceto com underline e/ou ífem (_ e -)"""
         self.assertFalse(self.city_especial_charcarters.is_valid())
 
-    def test_grafic_accents(self):
-        """Permite que seja possível usar acentuações gráficas nos nomes de cidade"""
+    def test_city_with_grafic_accents(self):
+        """Acentuações gráficas nos nomes de cidade devem ser permitidas"""
         self.assertTrue(self.city_graphic_accents.is_valid())

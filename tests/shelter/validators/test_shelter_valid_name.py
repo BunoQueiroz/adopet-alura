@@ -2,6 +2,7 @@ from rest_framework.test import APITestCase
 from shelter.serializers import ShelterSerializer
 
 class ShelterNameValidTestCase(APITestCase):
+
     def setUp(self):
         self.shelter_valid_name = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -23,7 +24,7 @@ class ShelterNameValidTestCase(APITestCase):
         })
     
     def test_shelter_valid_name(self):
-        """Permite que um nome de abrigo que possue letras e números, além de alguns caracteres especiais, seja válido"""
+        """Um nome de abrigo que possue letras e números, além de alguns caracteres especiais, seja válido"""
         self.assertTrue(self.shelter_valid_name.is_valid())
 
     def test_shelter_name_without_letters(self):
