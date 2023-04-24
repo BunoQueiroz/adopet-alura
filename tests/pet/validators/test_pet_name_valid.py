@@ -39,15 +39,15 @@ class PetNameValidTestCase(APITestCase):
             'shelter': self.shelter.pk,
         })
 
-    def test_number_in_pet_name(self):
+    def test_pet_number_in_name(self):
         """Não podem haver números nos nomes dos pets"""
         self.assertFalse(self.pet_name_with_numbers.is_valid())
     
-    def test_special_characters_in_pet_name(self):
+    def test_pet_special_characters_in_pet_name(self):
         """Não podem haver caracteres especiais nos nomes dos pets"""
         self.assertFalse(self.pet_name_with_special_characters.is_valid())
 
-    def test_graphics_accents_in_pet_name(self):
+    def test_pet_graphics_accents_in_pet_name(self):
         """Podem conter acentuações gráficas nos nomes dos pets"""
         self.assertTrue(self.pet_name_with_graphics_accents.is_valid())
 

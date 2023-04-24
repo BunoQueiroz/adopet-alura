@@ -39,7 +39,7 @@ class PetCharacteristicsValidTestCase(APITestCase):
         })
         
     def test_pet_number_in_characteristics(self):
-        """Não podem, em hipótese alguma, números nas características dos pets"""
+        """Não podem haver, em hipótese alguma, números nas características dos pets"""
         self.assertFalse(self.pet_number_in_characteristics.is_valid())
 
     def test_pet_graphic_accents_in_characteristics(self):
@@ -51,5 +51,5 @@ class PetCharacteristicsValidTestCase(APITestCase):
         self.assertTrue(self.pet_two_or_more_characteristics.is_valid())
     
     def test_pet_special_characters_in_characteristics(self):
-        """Podem haver mais de uma única característica nos pets"""
+        """Não podem haver caracteres especiais nas características dos pets"""
         self.assertFalse(self.pet_special_characters_in_characteristics.is_valid())

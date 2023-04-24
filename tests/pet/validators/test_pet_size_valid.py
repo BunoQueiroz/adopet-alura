@@ -30,9 +30,16 @@ class PetSizeValidTestCase(APITestCase):
             'characteristics': 'Energético',
             'shelter': self.shelter.pk,
         })
+        self.pet_size_blank = PetSerializer(data={
+            'name': 'João Otávio',
+            'age': '3 meses',
+            'size': '',
+            'characteristics': 'Energético',
+            'shelter': self.shelter.pk,
+        })
                 
     def test_pet_size_valid(self):
-        """As únicas opções em tamanho são: GRANDE, MÉDIO ou PEQUENO"""
+        """As únicas opções de tamanho para os pets são: GRANDE, MÉDIO ou PEQUENO"""
         self.pet_size_valid.is_valid(raise_exception=False)
         self.assertRegex(self.pet_size_valid.data['size'], r'^(grande|médio|pequeno|Grande|Médio|Pequeno)$')
         
@@ -43,3 +50,7 @@ class PetSizeValidTestCase(APITestCase):
     def test_pet_word_any(self):
         """Uma palavra qualquer não deve ser válida no campo de tamanho dos pets"""
         self.assertFalse(self.pet_size_any_word.is_valid())        
+    
+    def test_pet_size_blank(self):
+        """O tamanho do pet deve ser, obrigatóriamente, preenchido"""
+        self.assertFalse(self.pet_size_blank.is_valid())        
