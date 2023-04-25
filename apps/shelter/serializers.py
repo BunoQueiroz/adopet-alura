@@ -2,7 +2,7 @@ from rest_framework import serializers
 from shelter.models import Shelter
 from shelter.validators import invalid_name_shelter, invalid_state
 from shelter.validators import invalid_borhood, invalid_phone, invalid_name_city
-from shelter.validators import invalid_email
+from shelter.validators import invalid_email, invalid_password
 
 class ShelterSerializer(serializers.ModelSerializer):
     
@@ -31,5 +31,11 @@ class ShelterSerializer(serializers.ModelSerializer):
 
         if invalid_email(data['email']):
             raise serializers.ValidationError({'email': 'Email inválido'})
+        
+        if invalid_password(data['password']):
+            raise serializers.ValidationError({'password': 'Por favor, escreva senhas mais fortes com, pelo menos, 8 caracteres'})
+
+        if data['password'] != data['confirm_password']:
+            raise serializers.ValidationError({'confirm_password': 'As senhas devem ser exatamente iguais'})
 
         return data
