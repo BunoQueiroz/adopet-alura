@@ -13,12 +13,12 @@ class AdoptionPUTRequestsTestCase(APITestCase):
         Adoption.objects.create(id=1, pet=pet, tutor=tutor, date='2023-05-02')
         self.data_in_db = {'pet': 1, 'tutor': 1, 'date': '2023-05-03'}
 
-    def test_adoption_put_status_401(self):
-        """O status code, ao requisitar o recurso de adoção via PUT, deve ser 401""" # Não autorizado
+    def test_adoption_put_by_anonymou_user_status_401(self):
+        """O status code, ao requisitar o recurso de adoção via PUT por usuários anônimos, deve ser 401"""
         response = self.client.put('/adoptions/1/', self.data_in_db)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
     
-    def test_adoption_put_in_data_base(self):
+    def test_adoption_put_by_anonymou_user_in_data_base(self):
         """Uma adoção não pode ser alterada, por usuários anônimos, no banco de dados"""
         self.client.put('/adoptions/1/', self.data_in_db)
         adoption = Adoption.objects.filter(date='2023-05-03').exists()

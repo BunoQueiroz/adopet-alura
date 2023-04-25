@@ -15,12 +15,12 @@ class AdoptionPOSTRequestsTestCase(APITestCase):
         self.data_in_db = {'pet': 1, 'tutor': 1, 'date': '2023-05-03'}
         self.data_pet_adopted = {'pet': 1, 'tutor': 1, 'date': '2023-05-05'}
 
-    def test_adoption_post_status_401(self):
+    def test_adoption_post_by_anonymou_user_status_401(self):
         """O status code, para requisições POST de usuários anônimos, deve ser 401"""
         response = self.client.post('/adoptions/', self.data_status_401)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
     
-    def test_adoption_post_created_in_data_base(self):
+    def test_adoption_post_created_by_anonymou_user_in_data_base(self):
         """Uma adoção, mesmo válida, não deve ser inserida, de fato, no banco de dados por usuários anônimos"""
         self.client.post('/adoptions/', self.data_in_db)
         adoption = Adoption.objects.filter(date='2023-05-03').exists()
