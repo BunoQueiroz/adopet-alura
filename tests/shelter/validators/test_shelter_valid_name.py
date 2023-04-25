@@ -12,6 +12,7 @@ class ShelterNameValidTestCase(APITestCase):
             'phone': '',
             'email': 'email@gmail.com',
             'password': 'senhas001',
+            'confirm_password': 'senhas001',
         })        
         self.shelter_invalid_name = ShelterSerializer(data={
             'name': '1234-&@$56',
@@ -21,6 +22,7 @@ class ShelterNameValidTestCase(APITestCase):
             'phone': '',
             'email': 'email@gmail.com',
             'password': 'senhas001',
+            'confirm_password': 'senhas001',
         })
     
     def test_shelter_valid_name(self):
