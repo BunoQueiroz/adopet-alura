@@ -2,11 +2,16 @@ from rest_framework import serializers
 from shelter.models import Shelter
 from shelter.validators import invalid_name_shelter, invalid_state
 from shelter.validators import invalid_borhood, invalid_phone, invalid_name_city
+from shelter.validators import invalid_email
 
 class ShelterSerializer(serializers.ModelSerializer):
+    
+    password = serializers.CharField(write_only=True)
+    confirm_password = serializers.CharField(write_only=True)
+
     class Meta:
         model = Shelter
-        fields = ['name', 'password', 'email', 'phone', 'city', 'state', 'borhood']
+        fields = ['id', 'name', 'email', 'password', 'confirm_password', 'phone', 'city', 'state', 'borhood']
 
     def validate(self, data):
         if invalid_name_shelter(data['name']):
@@ -23,5 +28,8 @@ class ShelterSerializer(serializers.ModelSerializer):
 
         if invalid_phone(data['phone']):
             raise serializers.ValidationError({'phone': 'Número inválido. Segue o exemplo: (85)91234-1234'})
+
+        if invalid_email(data['email']):
+            raise serializers.ValidationError({'email': 'Email inválido'})
 
         return data
