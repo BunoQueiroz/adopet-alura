@@ -148,6 +148,8 @@ REST_FRAMEWORK = {
         'anon': os.getenv('ANON_THROTTLE_RATE', '10/days'),
         'user': os.getenv('USER_THROTTLE_RATE', '100/days'),
     },
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
 }
 
 # Signals
