@@ -4,6 +4,7 @@ from .validators import different_passwords, weak_password, full_name_invalid, e
 
 class TutorSerializer(serializers.ModelSerializer):
     
+    password = serializers.CharField(write_only=True)
     confirm_password = serializers.CharField(write_only=True)
     
     class Meta:
