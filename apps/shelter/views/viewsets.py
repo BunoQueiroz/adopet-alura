@@ -6,6 +6,7 @@ from rest_framework.response import Response
 class ShelterViewSet(viewsets.ModelViewSet):
     serializer_class = ShelterSerializer
     queryset = Shelter.objects.all()
+    search_fields = ['city', 'name', 'state', 'email']
 
     def create(self, request, *args, **kwargs):
         data = request.data
