@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'apps.tutor',
     'apps.shelter',
     'apps.pet',
+    'apps.core',
 ]
 
 MIDDLEWARE = [
