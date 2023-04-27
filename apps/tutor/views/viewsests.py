@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404
 class TutorViewSet(viewsets.ModelViewSet):
     serializer_class = TutorSerializer
     queryset = Tutor.objects.all()
+    search_fields = ['full_name', 'email']
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
