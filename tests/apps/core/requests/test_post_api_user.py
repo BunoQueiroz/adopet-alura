@@ -8,7 +8,8 @@ class APIUserPostRequestsTestCase(APITestCase):
     def setUp(self) -> None:
         self.data = {
             'email': 'emailapi@gmail.com',
-            'password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'company_or_user': 'usuário qualquer',
             'type': 'm',
         }
