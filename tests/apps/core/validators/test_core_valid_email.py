@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 from core.serializers import APIUserSerializer
 
 
-class APIUserCompanyOrUserValidTestCase(APITestCase):
+class APIUserEmailValidTestCase(APITestCase):
 
     def setUp(self) -> None:
         self.api_user_email_blank = APIUserSerializer(data={
