@@ -2,6 +2,8 @@ from rest_framework.test import APITestCase
 from shelter.models import Shelter
 from tutor.models import Tutor
 from rest_framework import status
+from core.models import APIUser
+
 
 class AuthShelterAndTutorTokenTestCase(APITestCase):
 
@@ -20,8 +22,15 @@ class AuthShelterAndTutorTokenTestCase(APITestCase):
             email='emailqualquer@gmail.com',
             password='tutor-token',   
         )
+        APIUser.objects.create_user(
+            company_or_user='usuario mobile',
+            username='apiuser-token',
+            email='emailmobile@gmail.com',
+            password='Senha001',   
+        )
         self.tutor_data = {'username': 'tutor-token', 'password': 'tutor-token'}
         self.shelter_data = {'username': 'abrigo-token', 'password': 'abrigo-token'}
+        self.api_user_data = {'username': 'apiuser-token', 'password': 'Senha001'}
 
     def test_config_authtoken_shelter(self):
         """Os abrigos devem conseguir autenticação via token"""
@@ -33,4 +42,7 @@ class AuthShelterAndTutorTokenTestCase(APITestCase):
         response = self.client.post('/auth/', self.tutor_data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-
+    def test_config_authtoken_api_user(self):
+        """Os 'usuários externos' devem conseguir autenticação via token"""
+        response = self.client.post('/auth/', self.api_user_data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
