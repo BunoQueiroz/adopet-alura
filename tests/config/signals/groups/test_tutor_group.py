@@ -17,7 +17,7 @@ class SignalsTutorGroupTestCase(APITestCase):
             'confirm_password': 'senha001',
         }
 
-    def test_signals_tutor_belongs_tutors(self):
+    def test_signals_tutor_belongs_tutor_group(self):
         """Quando um tutor for criado, ele deve pertencer à um grupo chamado 'tutor'"""
         self.client.post('/tutors/', self.data)
         tutor = Tutor.objects.get(username='bqueiroz@gmail.com')
@@ -27,10 +27,7 @@ class SignalsTutorGroupTestCase(APITestCase):
         """Os tutores possuem as permissões de usuário anônimo e permissões sobre o recurso de tutores"""
         self.client.post('/tutors/', self.data)
         tutor = Tutor.objects.get(username='bqueiroz@gmail.com')
-        permissions = tutor.groups.get().permissions
-        self.assertTrue(permissions.filter(codename='view_pet').exists())
-        self.assertTrue(permissions.filter(codename='view_tutor').exists())
-        self.assertTrue(permissions.filter(codename='view_shelter').exists())
-        self.assertTrue(permissions.filter(codename='add_tutor').exists())
-        self.assertTrue(permissions.filter(codename='change_tutor').exists())
-        self.assertTrue(permissions.filter(codename='delete_tutor').exists())
+        permissions = ['view_pet', 'view_tutor', 'view_shelter', 'add_tutor', 'change_tutor', 'delete_tutor']
+        tutor_permissions = tutor.groups.get().permissions
+        for permission in permissions:
+            self.assertTrue(tutor_permissions.filter(codename=permission).exists())

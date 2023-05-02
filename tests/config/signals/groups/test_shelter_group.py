@@ -20,13 +20,13 @@ class SignalsShelterGroupTestCase(APITestCase):
             'confirm_password': 'senhas001',
         }
 
-    def test_shelter_in_shelter_group(self):
+    def test_signals_shelter_belongs_shelter_group(self):
         """Todos os abrigos cadastrados devem pertencer ao seu respectivo grupo"""
         self.client.post('/shelters/', self.data)
         shelter = Shelter.objects.get(email='emailtest@gmail.com')
         self.assertEqual(shelter.groups.get().name, 'shelter')
 
-    def test_permissions_shelter_group(self):
+    def test_signals_shelter_group_permissions(self):
         self.client.post('/shelters/', self.data)
         shelter_group = Shelter.objects.get(email='emailtest@gmail.com').groups.get()
         group_permissions = shelter_group.permissions
