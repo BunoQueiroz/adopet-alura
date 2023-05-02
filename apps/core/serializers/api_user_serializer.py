@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from core.models import APIUser
 from core.validators import invalid_email, invalid_password
+from core.validators import invalid_company_or_user
 
 
 class APIUserSerializer(serializers.ModelSerializer):
@@ -20,5 +21,8 @@ class APIUserSerializer(serializers.ModelSerializer):
         
         if data['password'] != data['confirm_password']:
             raise serializers.ValidationError({'confirm_password': 'As senhas não podem ser diferentes'})
+        
+        if invalid_company_or_user(data['company_or_user']):
+            raise serializers.ValidationError({'company_or_user': 'Usuário ou compania inválida'})
 
         return data
