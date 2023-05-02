@@ -54,6 +54,13 @@ class APIUserCompanyOrUserValidTestCase(APITestCase):
             'confirm_password': 'Senhas001',
             'type': 'a',
         })
+        self.api_user_company_or_user_blank = APIUserSerializer(data={
+            'email': 'email@valido.com',
+            'company_or_user': '',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
+            'type': 'a',
+        })
 
     def test_api_user_company_or_user_small(self):
         """O nome de usuário de (api-user) deve conter ao menos 3 caracteres"""
@@ -77,3 +84,6 @@ class APIUserCompanyOrUserValidTestCase(APITestCase):
         self.assertFalse(self.api_user_company_or_user_with_number_and_two_letters.is_valid())
         self.assertTrue(self.api_user_company_or_user_with_number_and_tree_letters.is_valid())
 
+    def test_api_user_company_or_user_blank(self):
+        """Não é permitido que os nomes de usuário de (api-user) sejam vazios"""
+        self.assertFalse(self.api_user_company_or_user_blank.is_valid())
