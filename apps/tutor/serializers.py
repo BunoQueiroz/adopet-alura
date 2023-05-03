@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from tutor.models import Tutor
-from .validators import different_passwords, weak_password, full_name_invalid, email_invalid
+from .validators import weak_password, full_name_invalid, email_invalid
+
 
 class TutorSerializer(serializers.ModelSerializer):
     
@@ -15,7 +16,7 @@ class TutorSerializer(serializers.ModelSerializer):
         if weak_password(data['password']):
             raise serializers.ValidationError({'password': 'A senha é muito fraca'})
         
-        if different_passwords(data['password'], data['confirm_password']):
+        if data['password'] != data['confirm_password']:
             raise serializers.ValidationError({'confirm_password': 'As senhas passadas NÃO podem ser diferentes'})
         
         if full_name_invalid(data['full_name']):
