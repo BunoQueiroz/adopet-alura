@@ -3,6 +3,8 @@ from shelter.models import Shelter
 from shelter.validators import invalid_name_shelter, invalid_state
 from shelter.validators import invalid_borhood, invalid_phone, invalid_name_city
 from shelter.validators import invalid_email, invalid_password
+from common.utils import field_requireds
+
 
 class ShelterSerializer(serializers.ModelSerializer):
     
@@ -14,6 +16,10 @@ class ShelterSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'email', 'password', 'confirm_password', 'phone', 'city', 'state', 'borhood']
 
     def validate(self, data):
+
+        expected_fields = ['name', 'email', 'password', 'confirm_password', 'phone', 'city', 'state', 'borhood']
+        field_requireds(expected_fields, data)
+
         if invalid_name_shelter(data['name']):
             raise serializers.ValidationError({'name': 'O nome deve conter ao menos uma letra'})
         
