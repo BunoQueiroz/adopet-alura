@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from tutor.models import Tutor
 from .validators import weak_password, full_name_invalid, email_invalid
+from common.utils import field_requireds
 
 
 class TutorSerializer(serializers.ModelSerializer):
@@ -13,6 +14,10 @@ class TutorSerializer(serializers.ModelSerializer):
         fields = ['id', 'full_name', 'email', 'password', 'confirm_password']
     
     def validate(self, data):
+        
+        expected_fields = ['full_name', 'email', 'password', 'confirm_password']
+        field_requireds(expected_fields, data)
+
         if weak_password(data['password']):
             raise serializers.ValidationError({'password': 'A senha é muito fraca'})
         
