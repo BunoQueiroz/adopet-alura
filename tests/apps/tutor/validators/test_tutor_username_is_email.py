@@ -14,8 +14,8 @@ class TutorUsernameIsEmailTestCase(APITestCase):
             'id': 201,
             'full_name': 'Brunos Castros',
             'email': 'first_email@gmail.com',
-            'password': 'password01',
-            'confirm_password': 'password01',
+            'password': 'Password01',
+            'confirm_password': 'Password01',
         }
 
     def test_tutor_username_equal_email(self):

@@ -7,20 +7,20 @@ class TutorNameValidTestCase(TestCase):
         self.tutor_unique_name = TutorSerializer(data={
             'full_name': 'test',
             'email': 'email@email.com',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
         self.tutor_name_with_number = TutorSerializer(data={
             'full_name': 'test1 twoortree',
             'email': 'email@email.com',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
         self.tutor_name_valid = TutorSerializer(data={
             'full_name': 'Bruno de Castro João Cícero Uchôa',
             'email': 'email@email.com',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
 
     def test_tutor_just_name(self):

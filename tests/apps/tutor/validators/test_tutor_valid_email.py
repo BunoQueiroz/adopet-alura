@@ -9,49 +9,49 @@ class TutorEmailValidTestCase(APITestCase):
             username = 'tutor test',
             full_name = 'tutor test',
             email = 'bqueiroz@gmail.com',
-            password = 'password01'
+            password = 'Password01'
         )
         self.tutor_repeated_email = TutorSerializer(data={
             'full_name': 'Bruno Castro',
             'email': 'bqueiroz@gmail.com',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
         self.tutor_hostless_email = TutorSerializer(data={
             'full_name': 'Bruno Castro',
             'email': 'email@',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
         self.tutor_email_with_only_number = TutorSerializer(data={
             'full_name': 'Bruno Castro',
             'email': '12345bbruno@gmail.com',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
         self.tutor_email_with_invalid_host = TutorSerializer(data={
             'full_name': 'Bruno Castro',
             'email': 'bruno@132.com',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
         self.tutor_email_valid_one = TutorSerializer(data={
             'full_name': 'Bruno Castro',
             'email': 'bqueiroz048@gmail.com',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
         self.tutor_email_valid_two = TutorSerializer(data={
             'full_name': 'Bruno Castro',
             'email': 'bqueiroz048@gmail.com.br',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
         self.tutor_email_valid_tree = TutorSerializer(data={
             'full_name': 'Bruno Castro',
             'email': 'bqueiroz-048@w3school.com.br',
-            'password': 'password01',
-            'confirm_password': 'password01'
+            'password': 'Password01',
+            'confirm_password': 'Password01'
         })
 
     def test_tutor_email_valid(self):

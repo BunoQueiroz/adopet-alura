@@ -7,14 +7,14 @@ from rest_framework.authtoken.models import Token
 class SignalsTutorGroupTestCase(APITestCase):
 
     def setUp(self) -> None:
-        self.user = User.objects.create_superuser('bruno', 'bruno@gmail.com', 'senha001')
+        self.user = User.objects.create_superuser('bruno', 'bruno@gmail.com', 'Senha001')
         self.token = Token.objects.create(user=self.user)
         self.client.credentials(HTTP_AUTHORIZATION=f'Token {self.token}')
         self.data = {
             'full_name': 'Bruno de Castro',
             'email': 'bqueiroz@gmail.com',
-            'password': 'senha001',
-            'confirm_password': 'senha001',
+            'password': 'Senha001',
+            'confirm_password': 'Senha001',
         }
 
     def test_signals_tutor_belongs_tutor_group(self):
