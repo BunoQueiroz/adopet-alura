@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from tutor.models import Tutor
-from .validators import full_name_invalid, email_invalid
+from .validators import full_name_invalid
 from common.utils import field_requireds
-from common.validators import invalid_password
+from common.validators import invalid_password, invalid_email
 
 
 class TutorSerializer(serializers.ModelSerializer):
@@ -28,7 +28,7 @@ class TutorSerializer(serializers.ModelSerializer):
         if full_name_invalid(data['full_name']):
             raise serializers.ValidationError({'full_name': 'O nome passado não é válido'})
         
-        if email_invalid(data['email']):
+        if invalid_email(data['email']):
             raise serializers.ValidationError({'email': 'Endereço de email inválido'})
 
         return data
