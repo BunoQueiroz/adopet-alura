@@ -10,8 +10,8 @@ class ShelterPasswordValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': '',
             'phone': '',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'email': '1234@gmail.com'
         })
         self.shelter_email_with_capital_letters = ShelterSerializer(data={
@@ -20,8 +20,8 @@ class ShelterPasswordValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': '',
             'phone': '',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'email': 'EmailCapitalLeters@gmail.com'
         })
         self.shelter_email_with_letters_and_numbers = ShelterSerializer(data={
@@ -30,8 +30,8 @@ class ShelterPasswordValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': '',
             'phone': '',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'email': 'email1234@gmail.com'
         })
         self.shelter_email_starting_with_number = ShelterSerializer(data={
@@ -40,8 +40,8 @@ class ShelterPasswordValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': '',
             'phone': '',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'email': '88email1234@gmail.com'
         })
         self.shelter_email_starting_with_special_character = ShelterSerializer(data={
@@ -50,8 +50,8 @@ class ShelterPasswordValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': '',
             'phone': '',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'email': '#email1234@gmail.com'
         })
         self.shelter_email_without_domain = ShelterSerializer(data={
@@ -60,8 +60,8 @@ class ShelterPasswordValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': '',
             'phone': '',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'email': 'email1234@'
         })
         self.shelter_email_with_numeric_domain = ShelterSerializer(data={
@@ -70,8 +70,8 @@ class ShelterPasswordValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': '',
             'phone': '',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'email': 'email1234@1234.com'
         })
         self.shelter_email_with_domain_letter_and_number = ShelterSerializer(data={
@@ -80,8 +80,8 @@ class ShelterPasswordValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': '',
             'phone': '',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'email': 'email1234@w3schools.com'
         })
         self.shelter_email_blank = ShelterSerializer(data={
@@ -90,8 +90,8 @@ class ShelterPasswordValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': '',
             'phone': '',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'email': ''
         })
 

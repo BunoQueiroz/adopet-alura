@@ -10,7 +10,8 @@ class ShelterStateValidTestCase(APITestCase):
             'city': 'city valid',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'state': 'A',
         })
         self.state_with_tree_characters = ShelterSerializer(data={
@@ -19,7 +20,8 @@ class ShelterStateValidTestCase(APITestCase):
             'city': 'city valid',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'state': 'abc',
         })
         self.state_with_special_characters = ShelterSerializer(data={
@@ -28,7 +30,8 @@ class ShelterStateValidTestCase(APITestCase):
             'city': 'city valid',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'state': '%")(*&¨%$#@!-+*;.,|\/',
         })
         self.state_with_number = ShelterSerializer(data={
@@ -37,7 +40,8 @@ class ShelterStateValidTestCase(APITestCase):
             'city': 'city valid',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'state': 'a7',
         })
         self.state_without_capital_letter = ShelterSerializer(data={
@@ -46,7 +50,8 @@ class ShelterStateValidTestCase(APITestCase):
             'city': 'city valid',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'state': 'ce',
         })
         self.state_with_one_capital_letter = ShelterSerializer(data={
@@ -55,7 +60,8 @@ class ShelterStateValidTestCase(APITestCase):
             'city': 'city valid',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'state': 'Ce',
         })
 

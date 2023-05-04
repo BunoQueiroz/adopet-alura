@@ -16,8 +16,8 @@ class SignalsShelterGroupTestCase(APITestCase):
             'phone': '',
             'state': 'CE',
             'email': 'emailtest@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         }
 
     def test_signals_shelter_belongs_shelter_group(self):

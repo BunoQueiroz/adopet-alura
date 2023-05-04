@@ -11,8 +11,8 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'state': 'CE',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         })
         self.borhood_name_with_few_characters = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -21,8 +21,8 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'state': 'CE',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         })
         self.borhood_with_special_characters = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -31,8 +31,8 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'state': 'CE',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         })
         self.borhood_blank = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -41,8 +41,8 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'state': 'CE',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         })
         self.borhood_valid = ShelterSerializer(data={
             'name': 'Nome do Abrigo',
@@ -51,8 +51,8 @@ class ShelterBorhoodValidTestCase(APITestCase):
             'state': 'CE',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         })
 
     def test_borhood_with_number(self):

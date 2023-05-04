@@ -10,8 +10,8 @@ class ShelterPhoneValidTestCase(APITestCase):
             'city': 'Paraipaba',
             'state': 'CE',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'phone': 'meu telefone01',
             'borhood': 'bairro fulano',
         })
@@ -20,8 +20,8 @@ class ShelterPhoneValidTestCase(APITestCase):
             'city': 'Paraipaba',
             'state': 'CE',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'phone': '-852200000',
             'borhood': 'bairro fulano',
         })
@@ -31,8 +31,8 @@ class ShelterPhoneValidTestCase(APITestCase):
             'state': 'CE',
             'borhood': 'bairro daqui',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'road': 'rua joão',
             'phone': '11900000000',
         })
@@ -42,8 +42,8 @@ class ShelterPhoneValidTestCase(APITestCase):
             'city': 'Paraipaba',
             'state': 'CE',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'phone': '5699999999999',
         })
         self.shelter_number_valid_with_ddd = ShelterSerializer(data={
@@ -52,8 +52,8 @@ class ShelterPhoneValidTestCase(APITestCase):
             'city': 'Paraipaba',
             'state': 'CE',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'phone': '(85)98163-9630',
         })
         self.shelter_number_valid_with_ddd_and_nc = ShelterSerializer(data={
@@ -62,8 +62,8 @@ class ShelterPhoneValidTestCase(APITestCase):
             'city': 'Paraipaba',
             'state': 'CE',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
             'phone': '+55 (85)98163-9630',
         })
 

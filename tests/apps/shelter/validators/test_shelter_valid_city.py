@@ -11,8 +11,8 @@ class ShelterCityValidTestCase(APITestCase):
             'state': 'CE',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         })
         self.city_with_name_short = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -21,8 +21,8 @@ class ShelterCityValidTestCase(APITestCase):
             'state': 'CE',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         })
         self.city_especial_charcarters = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -31,8 +31,8 @@ class ShelterCityValidTestCase(APITestCase):
             'state': 'CE',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         })
         self.city_graphic_accents = ShelterSerializer(data={
             'name': 'Shelter@ & Valid-123ração',
@@ -41,8 +41,8 @@ class ShelterCityValidTestCase(APITestCase):
             'state': 'CE',
             'phone': '',
             'email': 'email@gmail.com',
-            'password': 'senhas001',
-            'confirm_password': 'senhas001',
+            'password': 'Senhas001',
+            'confirm_password': 'Senhas001',
         })
 
     def test_city_with_number(self):
