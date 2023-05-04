@@ -29,7 +29,7 @@ class AdoptionPOSTRequestsTestCase(APITestCase):
         self.assertFalse(adoption)
 
 
-class AdoptionPOSTRequestsAutorizedTestCase(APITestCase):
+class AdoptionPOSTRequestsTutorAutorizedTestCase(APITestCase):
 
     def setUp(self) -> None:
         self.tutor = Tutor.objects.create_user('tutoradocao', 'email@tutor.com', 'senha001', id=102, full_name='meu nome')
@@ -40,7 +40,12 @@ class AdoptionPOSTRequestsAutorizedTestCase(APITestCase):
         Pet.objects.create(id=102, name='Meu pet', size='Médio', age='2 meses', shelter=shelter, characteristics='Ágil e fiel')
         self.data_pet_adopted = {'pet': 102, 'tutor': 102, 'date': '2023-05-05'}
 
-    def test_adoption_post_pet_adopted(self):
+    def test_adoption_post_status_201(self):
+        """Ao ser realizada uma adoção, o status code retornado deve ser 201"""
+        response = self.client.post(self.url, self.data_pet_adopted)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+    
+    def test_adoption_post_pet_with_status_adopted(self):
         """Os pets adotados devem possuir o valor TRUE em seu campo de adoção"""
         self.client.post(self.url, self.data_pet_adopted)
         pet_adopted = get_object_or_404(Pet, pk=102)
