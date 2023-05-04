@@ -22,7 +22,8 @@ class APIUser(User):
 def insert_api_user_in_api_user_group(sender, instance: APIUser, created, **kwargs):
     group, group_not_created = Group.objects.get_or_create(name='api_user')
     if created and group_not_created:
-        instance.groups.add(group)
-    permissions = ['view_shelter', 'view_pet', 'view_tutor', 'add_tutor', 'add_shelter']
-    group_with_permissions = add_permissions(group, permissions)
-    instance.groups.add(group_with_permissions)
+        permissions = ['view_shelter', 'view_pet', 'view_tutor', 'add_tutor', 'add_shelter']
+        group_with_permissions = add_permissions(group, permissions)
+        instance.groups.add(group_with_permissions)
+        return
+    instance.groups.add(group)
