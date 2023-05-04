@@ -18,22 +18,22 @@ class Shelter(User):
 
 @receiver(post_save, sender=Shelter)
 def insert_new_shelter_in_shelter_group(sender, created, instance: Shelter, **kwargs):
-    if created:
-        group, group_not_created = Group.objects.get_or_create(name='shelter')
-        if group_not_created:
-            permissions = [
-                'view_tutor',
-                'view_pet',
-                'add_pet',
-                'change_pet',
-                'delete_pet',
-                'view_shelter',
-                'add_shelter',
-                'change_shelter',
-                'delete_shelter',
-                'view_adoption',
-                'delete_adoption',
-            ]
-            group_permissions = add_permissions(group, permissions)
-            instance.groups.add(group_permissions)
-        instance.groups.add(group)
+    group, group_not_created = Group.objects.get_or_create(name='shelter')
+    if created and group_not_created:
+        permissions = [
+            'view_tutor',
+            'view_pet',
+            'add_pet',
+            'change_pet',
+            'delete_pet',
+            'view_shelter',
+            'add_shelter',
+            'change_shelter',
+            'delete_shelter',
+            'view_adoption',
+            'delete_adoption',
+        ]
+        group_permissions = add_permissions(group, permissions)
+        instance.groups.add(group_permissions)
+        return
+    instance.groups.add(group)
