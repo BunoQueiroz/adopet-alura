@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from core.models import APIUser
-from core.validators import invalid_email, invalid_password
+from core.validators import invalid_email
 from core.validators import invalid_company_or_user
+from common.validators import invalid_password
 
 
 class APIUserSerializer(serializers.ModelSerializer):
