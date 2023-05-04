@@ -2,9 +2,8 @@ from rest_framework import serializers
 from shelter.models import Shelter
 from shelter.validators import invalid_name_shelter, invalid_state
 from shelter.validators import invalid_borhood, invalid_phone, invalid_name_city
-from shelter.validators import invalid_email
 from common.utils import field_requireds
-from common.validators import invalid_password
+from common.validators import invalid_password, invalid_email
 
 
 class ShelterSerializer(serializers.ModelSerializer):
