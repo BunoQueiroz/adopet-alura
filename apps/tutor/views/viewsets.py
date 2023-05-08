@@ -3,6 +3,8 @@ from tutor.models import Tutor
 from tutor.serializers import TutorSerializer
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from rest_framework.permissions import DjangoModelPermissions
+
 
 class TutorViewSet(viewsets.ModelViewSet):
     serializer_class = TutorSerializer
@@ -26,3 +28,15 @@ class TutorViewSet(viewsets.ModelViewSet):
         t.set_password(request.data['password'])
         t.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ProfileTutorViewSet(viewsets.ModelViewSet):
+
+    permission_classes = [DjangoModelPermissions]
+    serializer_class = TutorSerializer
+    http_method_names = ['get', 'put', 'delete', 'patch']
+
+    def get_queryset(self):
+        auth_header = self.request.headers.get('Authorization')
+        token = auth_header.split()[1]
+        return Tutor.objects.filter(auth_token=token).only('email', 'full_name')
