@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from tutor.views import TutorViewSet
+from tutor.views import TutorViewSet, ProfileTutorViewSet
 from pet.views import PetViewSet, AdoptionViewSet
 from shelter.views import ShelterViewSet
 from django.conf import settings
@@ -14,6 +14,7 @@ router.register('tutors', TutorViewSet, 'tutors')
 router.register('pets', PetViewSet, 'pets')
 router.register('shelters', ShelterViewSet, 'shelters')
 router.register('adoptions', AdoptionViewSet, 'adoptions')
+router.register('tutor-profiles', ProfileTutorViewSet, 'tutor-profiles')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
