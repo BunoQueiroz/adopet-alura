@@ -39,4 +39,4 @@ class ProfileTutorViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         auth_header = self.request.headers.get('Authorization')
         token = auth_header.split()[1]
-        return Tutor.objects.filter(auth_token=token).only('email', 'full_name')
+        return Tutor.objects.filter(auth_token=token).only('id', 'email', 'full_name')
