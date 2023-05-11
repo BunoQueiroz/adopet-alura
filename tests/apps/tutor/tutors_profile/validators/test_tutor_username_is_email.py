@@ -2,6 +2,8 @@ from rest_framework.test import APITestCase
 from tutor.models import Tutor
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
+from django.urls import reverse
+
 
 class TutorUsernameIsEmailTestCase(APITestCase):
     
@@ -17,9 +19,10 @@ class TutorUsernameIsEmailTestCase(APITestCase):
             'password': 'Password01',
             'confirm_password': 'Password01',
         }
+        self.url = reverse('tutors-list')
 
     def test_tutor_username_equal_email(self):
         """Garante que os usernames dos tutores sejam seus próprios emails"""
-        self.client.post(path='/tutors/', data=self.data)
+        self.client.post(self.url, self.data)
         tutor_in_data_base = Tutor.objects.get(email=self.data['email'])
         self.assertEqual(tutor_in_data_base.username, self.email)
