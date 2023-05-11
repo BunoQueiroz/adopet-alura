@@ -5,19 +5,24 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 
 
-class ProfileTutorGETRequestsTestCase(APITestCase):
+class AllTutorsGETRequestsTestCase(APITestCase):
 
     def setUp(self) -> None:
         self.tutor_register = Tutor.objects.create_user('tutor1', 'tutor1@gmail.com', 'Senha004', full_name='Tutor')
-        self.url = reverse('tutor-profiles-list')
+        self.url = reverse('all-tutors')
 
-    def test_profile_tutor_get_status_401(self):
-        """Qualquer usuário não autenticado não pode ver os perfis de tutores"""
+    def test_all_tutors_get_status_200(self):
+        """Qualquer usuário não autenticado pode ver todos os tutores cadastrados"""
         response = self.client.get(self.url)
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_all_tutors_get_by_id_status_404(self):
+        """Qualquer usuário não autenticado não pode ver qualquer tutor cadastrados por seu id"""
+        response = self.client.get(f'{self.url}{self.tutor_register.pk}/')
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
 
-class ProfileTutorGETRequestsAuthenticatedTestCase(APITestCase):
+class AllTutorsGETRequestsAuthenticatedTestCase(APITestCase):
 
     def setUp(self) -> None:
         self.tutor_any = Tutor.objects.create_user(
@@ -25,9 +30,14 @@ class ProfileTutorGETRequestsAuthenticatedTestCase(APITestCase):
         )
         self.token = Token.objects.create(user=self.tutor_any)
         self.client.credentials(HTTP_AUTHORIZATION=f'token {self.token}')        
-        self.url = reverse('tutor-profiles-list')
+        self.url = reverse('all-tutors')
 
-    def test_profile_tutor_athenticated_get_status_200(self):
-        """Tutores autenticados devem ter como status code, de resposta a requisição, 200"""
+    def test_all_tutors_athenticated_get_status_200(self):
+        """Tutores autenticados devem ter como status code, de resposta a requisição get à rota de todos os tutores, 200"""
         response = self.client.get(self.url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+    
+    def test_all_tutors_athenticated_get_by_id_status_404(self):
+        """Tutores, mesmo autenticados, devem ter como status code, de resposta a requisição get à rota tutores por id, 404"""
+        response = self.client.get(f'{self.url}{self.tutor_any.pk}/')
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
