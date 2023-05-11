@@ -5,27 +5,27 @@ from rest_framework.authtoken.models import Token
 from django.urls import reverse
 
 
-class TutorProfileDELETERequestsTestCase(APITestCase):
+class AllTutorsDELETERequestsTestCase(APITestCase):
     
     def setUp(self):
         self.tutor_deleted = Tutor.objects.create_user(
-            'test delete', 'delete@email.com', 'testdelete01', full_name='test delete'
+            'test delete', 'delete@email.com', 'testdelete01', full_name='test delete', pk=1,
         )
-        self.url = reverse('tutor-profiles-list')
+        self.url = reverse('all-tutors')
 
-    def test_profile_tutor_delete_by_anonymous_users(self):
-        """O status retornado, ao ser realizada uma requisição DELETE por um usuário anônimo ao recurso de perfil de tutor, deve ser 401"""
+    def test_all_tutors_delete_by_anonymous_users_status_404(self):
+        """O status retornado, ao ser realizada uma requisição DELETE por um usuário anônimo ao recurso de perfil de tutor, deve ser 404"""
         response = self.client.delete(f'{self.url}{self.tutor_deleted.pk}/')
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_profile_tutor_delete_by_anonymous_users_data_base(self):
-        """Usuários anônimos não deve conseguir DELETAR qualquer perfil de tutor"""
+    def test_all_tutors_delete_by_anonymous_users_data_base(self):
+        """Usuários anônimos não deve conseguir DELETAR qualquer usuário tutor por ID"""
         self.client.delete(f'{self.url}{self.tutor_deleted.pk}/')
         pk = self.tutor_deleted.pk
         self.assertTrue(Tutor.objects.filter(pk=pk).exists())
 
 
-class TutorProfileDELETERequestsTutorAuthorizedTestCase(APITestCase):
+class AllTutorsDELETERequestsTutorAuthorizedTestCase(APITestCase):
     
     def setUp(self):
         self.tutor_authenticated = Tutor.objects.create_user(
@@ -33,15 +33,15 @@ class TutorProfileDELETERequestsTutorAuthorizedTestCase(APITestCase):
         )
         self.token = Token.objects.create(user=self.tutor_authenticated)
         self.client.credentials(HTTP_AUTHORIZATION=f'token {self.token}')
-        self.url = reverse('tutor-profiles-list')
+        self.url = reverse('all-tutors')
 
-    def test_profile_tutor_delete_by_tutor_authenticated_your_profile(self):
-        """O status retornado, ao ser realizada uma requisição DELETE feita por um tutor autenticado, deve ser 204"""
+    def test_all_tutors_delete_by_tutor_authenticated_outher_tutor_status_404(self):
+        """O status retornado, ao ser realizada uma requisição DELETE feita por um tutor autenticado, deve ser 404"""
         response = self.client.delete(f'{self.url}{self.tutor_authenticated.pk}/')
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_profile_tutor_delete_by_tutor_authenticated_in_data_base(self):
-        """Tutores autenticados deve conseguir DELETAR seu próprio perfil"""
+    def test_all_tutors_delete_by_tutor_authenticated_in_data_base(self):
+        """Tutores autenticados não devem conseguir DELETAR qualquer tutor por id"""
         self.client.delete(f'{self.url}{self.tutor_authenticated.pk}/')
         pk = self.tutor_authenticated.pk
-        self.assertFalse(Tutor.objects.filter(pk=pk).exists())
+        self.assertTrue(Tutor.objects.filter(pk=pk).exists())
