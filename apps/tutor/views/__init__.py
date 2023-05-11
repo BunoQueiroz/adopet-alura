@@ -1,1 +1,1 @@
-from .viewsets import TutorViewSet, ProfileTutorViewSet
+from .viewsets import AllTutorViewSet, ProfileTutorViewSet

@@ -3,13 +3,24 @@ from tutor.models import Tutor
 from tutor.serializers import TutorSerializer
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from rest_framework.permissions import DjangoModelPermissions
+from rest_framework.generics import ListAPIView
+from django.http import Http404
 
 
-class TutorViewSet(viewsets.ModelViewSet):
+class ProfileTutorViewSet(viewsets.ModelViewSet):
+
     serializer_class = TutorSerializer
-    queryset = Tutor.objects.all()
-    search_fields = ['full_name', 'email']
+    lookup_field = 'auth_token'
+
+    def get_queryset(self):
+        authorization_header = self.request.headers.get('authorization')
+        if authorization_header:
+            token = authorization_header.split()[1]
+            queryset = Tutor.objects.filter(auth_token=token).only('id', 'email', 'full_name')
+            if queryset is not None:
+                return queryset
+            raise Http404('Perfil não encontrado')
+        raise Http404('Perfil não encontrado')
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -30,13 +41,8 @@ class TutorViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class ProfileTutorViewSet(viewsets.ModelViewSet):
+class AllTutorViewSet(ListAPIView):
 
-    permission_classes = [DjangoModelPermissions]
+    search_fields = ['full_name', 'email']
     serializer_class = TutorSerializer
-    http_method_names = ['get', 'put', 'delete', 'patch']
-
-    def get_queryset(self):
-        auth_header = self.request.headers.get('Authorization')
-        token = auth_header.split()[1]
-        return Tutor.objects.filter(auth_token=token).only('id', 'email', 'full_name')
+    queryset = Tutor.objects.only('id', 'email', 'full_name')
