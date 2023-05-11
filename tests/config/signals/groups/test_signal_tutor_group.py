@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from tutor.models import Tutor
 from rest_framework.test import APITestCase
 from rest_framework.authtoken.models import Token
+from django.urls import reverse
 
 
 class SignalsTutorGroupTestCase(APITestCase):
@@ -16,16 +17,17 @@ class SignalsTutorGroupTestCase(APITestCase):
             'password': 'Senha001',
             'confirm_password': 'Senha001',
         }
+        self.url = reverse('tutors-list')
 
     def test_signals_tutor_belongs_tutor_group(self):
         """Quando um tutor for criado, ele deve pertencer à um grupo chamado 'tutor'"""
-        self.client.post('/tutors/', self.data)
+        self.client.post(self.url, self.data)
         tutor = Tutor.objects.get(username='bqueiroz@gmail.com')
         self.assertEqual(tutor.groups.get().name, 'tutor')
 
     def test_signals_tutor_group_permissions(self):
         """Os tutores possuem as permissões de usuário anônimo e permissões sobre o recurso de tutores"""
-        self.client.post('/tutors/', self.data)
+        self.client.post(self.url, self.data)
         tutor = Tutor.objects.get(username='bqueiroz@gmail.com')
         permissions = ['view_pet', 'view_tutor', 'view_shelter', 'add_tutor', 'change_tutor', 'delete_tutor']
         tutor_permissions = tutor.groups.get().permissions
