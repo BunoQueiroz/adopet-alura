@@ -1,9 +1,31 @@
 version: '3.9'
 
 services:
+
+  adopet:
+    image: adopet
+    container_name: adopet
+    environment:
+      - SECRET_KEY
+      - DEBUG
+      - DB_ENGINE
+      - DB_NAME=POSTGRES_DB
+      - DB_HOST
+      - DB_PORT
+      - DB_PASSWORD=POSTGRES_PASSWORD
+      - DB_USER=POSTGRES_USER
+      - TIME_EXPIRY_TOKEN
+      - ANON_THROTTLE_RATE
+      - USER_THROTTLE_RATE
+    depends_on:
+      - postgres
+    ports:
+      - 5000:8000
+
+
   postgres:
     image: postgres
-    container_name: 'data_base'
+    container_name: adopet_db
     environment:
       - POSTGRES_PASSWORD
       - POSTGRES_USER
