@@ -146,8 +146,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': os.getenv('ANON_THROTTLE_RATE', '10/days'),
-        'user': os.getenv('USER_THROTTLE_RATE', '100/days'),
+        'anon': os.getenv('ANON_THROTTLE_RATE', '1000/days'),
+        'user': os.getenv('USER_THROTTLE_RATE', '10000/days'),
     },
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10,
