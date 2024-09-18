@@ -74,4 +74,10 @@ class TutorEmailValidTestCase(APITestCase):
 
     def test_tutor_registered_email(self):
         """Emails já cadastrados devem ser considerado inválidos"""
+        Tutor.objects.create_user(
+            username='anyUser',
+            full_name = 'Bruno Castro',
+            email = 'bqueiroz@gmail.com',
+            password = 'Password01',
+        )
         self.assertFalse(self.tutor_repeated_email.is_valid())
