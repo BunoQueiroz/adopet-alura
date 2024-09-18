@@ -25,7 +25,7 @@ class TutorEmailValidTestCase(APITestCase):
         })
         self.tutor_email_with_only_number = TutorSerializer(data={
             'full_name': 'Bruno Castro',
-            'email': '12345bbruno@gmail.com',
+            'email': '12345@gmail.com',
             'password': 'Password01',
             'confirm_password': 'Password01'
         })
